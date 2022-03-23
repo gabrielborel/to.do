@@ -1,9 +1,6 @@
 import { useState } from "react";
-
 import "../styles/tasklist.scss";
-
 import { FiTrash, FiCheckSquare } from "react-icons/fi";
-
 import { v4 as uuidv4 } from "uuid";
 
 interface Task {
