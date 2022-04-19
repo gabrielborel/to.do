@@ -16,23 +16,31 @@ export function TaskList() {
   function handleCreateNewTask() {
     if (!newTaskTitle) return;
 
-    setTasks((prevTasks) => [
-      ...prevTasks,
+    const previousTasks = [...tasks];
+
+    const updatedTasks = [
+      ...previousTasks,
       { id: uuidv4(), title: newTaskTitle, isComplete: false },
-    ]);
+    ];
+
+    setTasks(updatedTasks);
     setNewTaskTitle("");
   }
 
   function handleToggleTaskCompletion(id: string) {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, isComplete: !task.isComplete } : { ...task }
-      )
+    const previousTasks = [...tasks];
+    const updatedTasks = previousTasks.map((task) =>
+      task.id === id ? { ...task, isComplete: !task.isComplete } : { ...task }
     );
+
+    setTasks(updatedTasks);
   }
 
   function handleRemoveTask(id: string) {
-    setTasks(tasks.filter((task) => id !== task.id));
+    const previousTasks = [...tasks];
+    const updatedTasks = previousTasks.filter((task) => id !== task.id);
+
+    setTasks(updatedTasks);
   }
 
   return (
